@@ -1,2 +1,2 @@
 # Crud-ster
-a simple crud app with Neon, Drizzle and Shadcn
+A simple crud app with Neon, Drizzle and Shadcn
