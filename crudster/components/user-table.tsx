@@ -7,7 +7,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { Button } from "./ui/button";
 import { getUsers } from "@/libs/user";
 
 export default async function UserTable() {
@@ -23,7 +22,6 @@ export default async function UserTable() {
           <TableHead>Email</TableHead>
           <TableHead>Created At</TableHead>
           <TableHead>Updated At</TableHead>
-          <TableHead>Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -33,10 +31,6 @@ export default async function UserTable() {
             <TableCell>{user.email}</TableCell>
             <TableCell>{user.createdAt?.toLocaleString()}</TableCell>
             <TableCell>{user.updatedAt?.toLocaleString()}</TableCell>
-            <TableCell className="flex gap-2">
-              <Button variant="outline" size="sm">View</Button>
-              <Button variant="outline" size="sm">Edit</Button>
-            </TableCell>
           </TableRow>
         ))}
       </TableBody>
