@@ -14,6 +14,11 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { createUser } from "@/libs/user"
+import { useState } from "react"
+import { Loader2 } from "lucide-react"
+import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 
 
 const formSchema = z.object({
@@ -26,7 +31,10 @@ const formSchema = z.object({
 })
 
 
+
 export default function UserForm() {
+    const router = useRouter();
+    const [loading, setLoading] = useState(false);
     // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -37,10 +45,17 @@ export default function UserForm() {
   })
  
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setLoading(true);
+    const userData = {
+        ...values,
+        password: "123456",
+    }
+  await createUser(userData);
+   form.reset();
+   setLoading(false);
+   toast.success("User created successfully");
+   router.refresh();
   }
 
 return (
@@ -72,7 +87,7 @@ return (
             </FormItem>
           )}
         />
-        <Button type="submit">Add user</Button>
+        <Button type="submit" disabled={loading}>{loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Add user"}</Button>
       </form>
     </Form>
     )

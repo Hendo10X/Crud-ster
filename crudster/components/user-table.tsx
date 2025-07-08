@@ -27,7 +27,7 @@ export default async function UserTable() {
       <TableBody>
         {users?.map((user) => (
           <TableRow key={user.id}>
-            <TableCell>{user.username}</TableCell>
+            <TableCell>{user.name}</TableCell>
             <TableCell>{user.email}</TableCell>
             <TableCell>{user.createdAt?.toLocaleString()}</TableCell>
             <TableCell>{user.updatedAt?.toLocaleString()}</TableCell>
