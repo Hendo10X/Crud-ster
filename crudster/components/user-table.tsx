@@ -9,8 +9,9 @@ import {
 } from "@/components/ui/table"
 import { getUsers } from "@/libs/user";
 import { Button } from "./ui/button";
-import { Edit, Trash } from "lucide-react";
-
+import { Edit } from "lucide-react";
+import DeleteButton from "./delete-button";
+    
 export default async function UserTable() {
   const users = await getUsers();
   return (
@@ -33,12 +34,10 @@ export default async function UserTable() {
             <TableCell>{user.email}</TableCell>
             <TableCell>{user.createdAt?.toLocaleString()}</TableCell>
             <TableCell>
-              <Button variant="ghost" size="icon" className="mr-2">
-                <Edit className="w-4 h-4" />
-              </Button>
-              <Button variant="ghost" size="icon">
-                <Trash className="w-4 h-4" />
-              </Button>
+                <Button variant="ghost" size="icon" className="mr-2">
+                    <Edit className="w-4 h-4" />
+                </Button>
+                <DeleteButton id={user.id} />
             </TableCell>
           </TableRow>
         ))}
