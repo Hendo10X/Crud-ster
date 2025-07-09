@@ -16,7 +16,7 @@ import UserForm from "@/components/user-form";
 export default function Home() {
     return (
     <div className="flex flex-col gap-4 max-w-7xl p-4 md:p-24 mx-auto items-center">
-      <h1 className="text-2xl font-bold">Users</h1>
+      <h1 className="text-2xl font-bold">Crudster</h1>
       <div className="flex gap-2 justify-end items-center w-full">
       <Dialog>
         <DialogTrigger asChild>
